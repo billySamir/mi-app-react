@@ -1,0 +1,320 @@
+/* Overlay del formulario */
+.contact-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Contenedor del formulario */
+.contact-form-container {
+  background: var(--bg);
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  position: relative;
+  border: 2px solid var(--border);
+  transition: all 0.3s ease;
+  animation: slideUp 0.3s ease;
+}
+
+/* Estilos para modo inline (dentro de la página) */
+.contact-form-container.inline {
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--social-bg);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  border-radius: 0.75rem;
+}
+
+/* Ajustes visuales: eliminar efecto modal (sin overlay, sin botón cerrar) */
+.contact-form-container.inline .close-btn { display: none; }
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Botón cerrar */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--accent);
+}
+
+/* Header del formulario */
+.contact-form-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form-header h2 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-h);
+  font-size: 1.75rem;
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-form-header p {
+  color: var(--text);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Formulario */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Grupos de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Mensaje de error */
+.error-message {
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Botón submit */
+.submit-btn {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Mensaje de éxito */
+.success-message {
+  text-align: center;
+  padding: 2rem 0;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.success-message p {
+  color: var(--text-h);
+  font-weight: 600;
+  margin: 0;
+}
+
+.success-message .success-detail {
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* Footer */
+.form-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text);
+}
+
+.form-footer p {
+  margin: 0 0 0.5rem 0;
+}
+
+.form-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Grupo DNI con botón de búsqueda */
+.dni-group .dni-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dni-group .dni-input-row input {
+  flex: 1;
+}
+
+.btn-buscar {
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-buscar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-buscar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Botón WhatsApp */
+.whatsapp-btn {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-btn:active {
+  transform: translateY(0);
+}
+
+.whatsapp-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Modo oscuro */
+html.dark-mode .contact-form-container {
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}

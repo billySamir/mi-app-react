@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraCorp - Catálogo de Alta Ingeniería</title>
+  
+  <!-- Cargamos Tailwind CSS v4 para procesar animaciones avanzadas y estilos modernos -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- Cargamos FontAwesome para los iconos de navegación y redes sociales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Efecto de transición global suave para todos los componentes interactivos */
+    * {
+      transition-property: background-color, border-color, transform, box-shadow, opacity, scale, rotate;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 300ms;
+    }
+  </style>
+</head>
+<body class="bg-[#090514] text-zinc-100 min-h-screen flex flex-col font-sans relative overflow-x-hidden">
+
+  <!-- Orbes decorativos de fondo para darle un ambiente premium a la página -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute top-20 left-10 w-96 h-96 rounded-full bg-indigo-900/10 blur-3xl"></div>
+    <div class="absolute bottom-40 right-10 w-96 h-96 rounded-full bg-purple-900/10 blur-3xl"></div>
+  </div>
+
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090514]/80 border-b border-zinc-800/60 w-full">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between" aria-label="Navegación Global">
+      
+      <!-- LOGO -->
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+          <span class="text-white font-extrabold text-sm">A</span>
+        </div>
+        <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent">
+          AuraCorp
+        </span>
+      </div>
+
+      <!-- MENÚ DESKTOP (Integrado con tus rutas especificadas) -->
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="index.html" class="text-sm font-semibold text-zinc-300 hover:text-indigo-400">CSS</a>
+        <a href="portafolio.html" class="text-sm font-semibold text-zinc-300 hover:text-indigo-400">Portafolio</a>
+        <a href="modal.html" class="text-sm font-semibold text-zinc-300 hover:text-indigo-400">Modal</a>
+        <a href="bootstrap.html" class="text-sm font-semibold text-zinc-300 hover:text-indigo-400">Bootstrap</a>
+        <a href="contacto.html" class="text-sm font-semibold text-zinc-300 hover:text-indigo-400">Contacto</a>
+      </div>
+
+      <!-- BOTÓN MENÚ MÓVIL (Hamburguesa) -->
+      <div class="flex lg:hidden">
+        <button id="open-menu-btn" type="button" class="p-2.5 rounded-md text-zinc-200 hover:bg-zinc-800/50 cursor-pointer" aria-label="Abrir Menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-6">
+            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- MENÚ LATERAL DESPLEGABLE MÓVIL -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex justify-end">
+      <div class="w-72 bg-[#090514] border-l border-zinc-800 h-full p-6 shadow-2xl flex flex-col">
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-bold text-lg text-indigo-400">Navegación</span>
+          <button id="close-menu-btn" class="p-1.5 rounded-lg text-zinc-300 hover:bg-zinc-800 cursor-pointer" aria-label="Cerrar Menú">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-col gap-5">
+          <a href="index.html" class="text-base font-medium text-zinc-300 hover:text-indigo-400 py-2 border-b border-zinc-900">CSS</a>
+          <a href="portafolio.html" class="text-base font-medium text-zinc-300 hover:text-indigo-400 py-2 border-b border-zinc-900">Portafolio</a>
+          <a href="modal.html" class="text-base font-medium text-zinc-300 hover:text-indigo-400 py-2 border-b border-zinc-900">Modal</a>
+          <a href="bootstrap.html" class="text-base font-medium text-zinc-300 hover:text-indigo-400 py-2 border-b border-zinc-900">Bootstrap</a>
+          <a href="contacto.html" class="text-base font-medium text-zinc-300 hover:text-indigo-400 py-2 border-b border-zinc-900">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN PRINCIPAL DE PRODUCTOS -->
+  <main class="w-full py-20 px-6 sm:px-8 lg:px-12 relative z-10 flex-grow flex items-center justify-center">
+    <div class="mx-auto max-w-7xl w-full">
+      
+      <!-- Fila de Cabecera y Rejilla de Tarjetas -->
+      <div class="grid gap-16 lg:gap-12 xl:grid-cols-3 items-start">
+        
+        <!-- Bloque de Texto de Introducción -->
+        <div class="max-w-xl lg:sticky lg:top-28">
+          <h2 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl leading-tight">
+            Nuestros <br class="hidden xl:inline">
+            <span class="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">componentes</span>
+          </h2>
+          <p class="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-light">
+            Desarrollamos e importamos hardware electrónico y sistemas de transmisión mecánica de nivel industrial con tolerancias micrométricas.
+          </p>
+          <div class="mt-8 flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-teal-500 animate-ping"></span>
+            <span class="text-xs font-semibold text-zinc-400 tracking-wider uppercase font-mono">Disponibilidad Inmediata</span>
+          </div>
+        </div>
+        
+        <!-- REJILLA DE TARJETAS DE PRODUCTOS -->
+        <ul role="list" class="grid gap-6 sm:grid-cols-2 xl:col-span-2">
+          
+          <!-- Producto 1 (Electrónico) -->
+          <li class="group bg-[#030108]/40 border border-zinc-800/85 hover:border-teal-500/50 rounded-[2rem] p-6 flex flex-col items-center text-center shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(20,184,166,0.15)] hover:-translate-y-2 cursor-pointer">
+            <!-- Contenedor con brillo circular de color Cian para productos electrónicos -->
+            <div class="relative size-32 rounded-full mb-5 overflow-hidden border-2 border-zinc-800 group-hover:border-teal-400 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.6)]">
+              <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=256&h=256&q=80" 
+                   alt="Procesador Gráfico GPU" 
+                   class="size-full object-cover transform scale-100 group-hover:scale-112 group-hover:rotate-2" />
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-teal-400 tracking-widest uppercase font-mono">Electrónico</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-teal-300 mt-1">Aura GPU V4</h3>
+              <p class="text-xs text-zinc-400 mt-2 max-w-[220px]">Procesador gráfico optimizado para computación paralela e IA.</p>
+            </div>
+            <!-- Características Técnicas que se acentúan al pasar el mouse -->
+            <div class="mt-6 flex items-center gap-4 text-zinc-500 opacity-60 group-hover:opacity-100 group-hover:text-zinc-300">
+              <span class="text-xs font-mono"><i class="fa-solid fa-bolt mr-1 text-teal-400"></i> 120W</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-microchip mr-1 text-teal-400"></i> 4nm</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-gauge-high mr-1 text-teal-400"></i> 2.4GHz</span>
+            </div>
+          </li>
+          
+          <!-- Producto 2 (Mecánico) -->
+          <li class="group bg-[#030108]/40 border border-zinc-800/85 hover:border-amber-500/50 rounded-[2rem] p-6 flex flex-col items-center text-center shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(245,158,11,0.15)] hover:-translate-y-2 cursor-pointer">
+            <!-- Contenedor con brillo de color Ámbar para productos mecánicos -->
+            <div class="relative size-32 rounded-full mb-5 overflow-hidden border-2 border-zinc-800 group-hover:border-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.6)]">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=256&h=256&q=80" 
+                   alt="Mecanismo de Engranaje Reloj" 
+                   class="size-full object-cover transform scale-100 group-hover:scale-112 group-hover:rotate-2" />
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-amber-400 tracking-widest uppercase font-mono">Mecánico</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-300 mt-1">Calibre Cronos</h3>
+              <p class="text-xs text-zinc-400 mt-2 max-w-[220px]">Estructura de engranajes y péndulo de zafiro de alta fidelidad.</p>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-zinc-500 opacity-60 group-hover:opacity-100 group-hover:text-zinc-300">
+              <span class="text-xs font-mono"><i class="fa-solid fa-compass-drafting mr-1 text-amber-400"></i> Precision</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-gem mr-1 text-amber-400"></i> 25j</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-history mr-1 text-amber-400"></i> 72h Res</span>
+            </div>
+          </li>
+          
+          <!-- Producto 3 (Electrónico) -->
+          <li class="group bg-[#030108]/40 border border-zinc-800/85 hover:border-teal-500/50 rounded-[2rem] p-6 flex flex-col items-center text-center shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(20,184,166,0.15)] hover:-translate-y-2 cursor-pointer">
+            <div class="relative size-32 rounded-full mb-5 overflow-hidden border-2 border-zinc-800 group-hover:border-teal-400 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.6)]">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=256&h=256&q=80" 
+                   alt="Placa Integrada" 
+                   class="size-full object-cover transform scale-100 group-hover:scale-112 group-hover:rotate-2" />
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-teal-400 tracking-widest uppercase font-mono">Electrónico</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-teal-300 mt-1">Módulo Core PCB</h3>
+              <p class="text-xs text-zinc-400 mt-2 max-w-[220px]">Tarjeta madre compacta multiprocesamiento y buses de cobre puro.</p>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-zinc-500 opacity-60 group-hover:opacity-100 group-hover:text-zinc-300">
+              <span class="text-xs font-mono"><i class="fa-solid fa-server mr-1 text-teal-400"></i> 10Gbps</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-memory mr-1 text-teal-400"></i> 16GB LPDDR5</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-ethernet mr-1 text-teal-400"></i> PoE</span>
+            </div>
+          </li>
+          
+          <!-- Producto 4 (Mecánico) -->
+          <li class="group bg-[#030108]/40 border border-zinc-800/85 hover:border-amber-500/50 rounded-[2rem] p-6 flex flex-col items-center text-center shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(245,158,11,0.15)] hover:-translate-y-2 cursor-pointer">
+            <div class="relative size-32 rounded-full mb-5 overflow-hidden border-2 border-zinc-800 group-hover:border-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.6)]">
+              <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&w=256&h=256&q=80" 
+                   alt="Engranajes de Cobre e Industria" 
+                   class="size-full object-cover transform scale-100 group-hover:scale-112 group-hover:rotate-2" />
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-amber-400 tracking-widest uppercase font-mono">Mecánico</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-300 mt-1">Eje Planetario G3</h3>
+              <p class="text-xs text-zinc-400 mt-2 max-w-[220px]">Reductor de velocidad helicoidal para motores de torsión pesada.</p>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-zinc-500 opacity-60 group-hover:opacity-100 group-hover:text-zinc-300">
+              <span class="text-xs font-mono"><i class="fa-solid fa-gears mr-1 text-amber-400"></i> 15:1 Ratio</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-anchor mr-1 text-amber-400"></i> Titanium</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-weight-hanging mr-1 text-amber-400"></i> 450Nm</span>
+            </div>
+          </li>
+          
+          <!-- Producto 5 (Electrónico) -->
+          <li class="group bg-[#030108]/40 border border-zinc-800/85 hover:border-teal-500/50 rounded-[2rem] p-6 flex flex-col items-center text-center shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(20,184,166,0.15)] hover:-translate-y-2 cursor-pointer">
+            <div class="relative size-32 rounded-full mb-5 overflow-hidden border-2 border-zinc-800 group-hover:border-teal-400 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.6)]">
+              <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=256&h=256&q=80" 
+                   alt="Placa de control e instrumentación" 
+                   class="size-full object-cover transform scale-100 group-hover:scale-112 group-hover:rotate-2" />
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-teal-400 tracking-widest uppercase font-mono">Electrónico</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-teal-300 mt-1">Placa IoT Nexus</h3>
+              <p class="text-xs text-zinc-400 mt-2 max-w-[220px]">Controlador Wi-Fi 6 de latencia cero para sistemas robóticos domésticos.</p>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-zinc-500 opacity-60 group-hover:opacity-100 group-hover:text-zinc-300">
+              <span class="text-xs font-mono"><i class="fa-solid fa-wifi mr-1 text-teal-400"></i> 6GHz</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-signal mr-1 text-teal-400"></i> +20dBm</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-shield-halved mr-1 text-teal-400"></i> AES-256</span>
+            </div>
+          </li>
+          
+          <!-- Producto 6 (Mecánico) -->
+          <li class="group bg-[#030108]/40 border border-zinc-800/85 hover:border-amber-500/50 rounded-[2rem] p-6 flex flex-col items-center text-center shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(245,158,11,0.15)] hover:-translate-y-2 cursor-pointer">
+            <div class="relative size-32 rounded-full mb-5 overflow-hidden border-2 border-zinc-800 group-hover:border-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.6)]">
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=256&h=256&q=80" 
+                   alt="Articulación Robótica" 
+                   class="size-full object-cover transform scale-100 group-hover:scale-112 group-hover:rotate-2" />
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-amber-400 tracking-widest uppercase font-mono">Mecánico</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-300 mt-1">Articulación Servo 10</h3>
+              <p class="text-xs text-zinc-400 mt-2 max-w-[220px]">Estructura de aluminio aeronáutico y servomotor integrado brushless.</p>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-zinc-500 opacity-60 group-hover:opacity-100 group-hover:text-zinc-300">
+              <span class="text-xs font-mono"><i class="fa-solid fa-angles-up mr-1 text-amber-400"></i> 360 deg</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-hourglass-start mr-1 text-amber-400"></i> 10M Cyc</span>
+              <span class="text-xs font-mono"><i class="fa-solid fa-shield mr-1 text-amber-400"></i> IP67</span>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full py-8 text-center text-xs font-mono text-zinc-500 border-t border-zinc-800/40 relative z-10 bg-[#090514]/40 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 AuraCorp. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-2">
+        <span>Diseñado en Ica, Perú</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+        <span>Tecnología Premium v4</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS JAVASCRIPT -->
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openMenuBtn = document.getElementById('open-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+
+    // Abre el menú deslizante móvil
+    openMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    // Cierra el menú deslizante móvil
+    closeMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+
+    // Cierra el menú lateral móvil al hacer click fuera del contenido principal
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.add('translate-x-full');
+      }
+    });
+  </script>
+
+</body>
+</html>

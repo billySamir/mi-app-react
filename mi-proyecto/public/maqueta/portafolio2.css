@@ -1,0 +1,186 @@
+/* 1. Reset Global */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #1a0522; /* Morado oscuro exterior */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Contenedor Principal */
+.container {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    background: #000; /* Fondo negro interior */
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* 3. Header */
+header {
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a0514;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #38b2ac;
+}
+
+/* 4. Sección Inicio Reestructurada */
+.inicio {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para permitir redes sociales abajo */
+    justify-content: center;
+    padding: 20px 10%;
+    gap: 20px;
+}
+
+/* Contenedor para alinear Texto e Imagen en la parte superior */
+.inicio-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 40px;
+}
+
+.inicio-detalle {
+    max-width: 550px;
+}
+
+.inicio-detalle h1 {
+    font-size: 50px;
+    background: linear-gradient(to right, #2c7a7b, #4fd1c5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.inicio-detalle h2 {
+    font-size: 20px;
+    color: #38b2ac;
+    margin-bottom: 20px;
+}
+
+.inicio-detalle p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #cbd5e0;
+}
+
+/* 5. Estilo de la Imagen (Glow y Animación) */
+.img-box {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(45deg, #38b2ac, #800080);
+    box-shadow: 0 0 30px rgba(56, 178, 172, 0.4);
+    animation: float 6s ease-in-out infinite;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #000;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* 6. Botón */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: transparent;
+    border: 2px solid #800080;
+    border-radius: 8px;
+    color: #800080;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #800080;
+    color: white;
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.5);
+}
+
+/* --- ESTILOS DE REDES SOCIALES (ABAJO Y CENTRADOS) --- */
+
+.redes-sociales {
+    display: flex;
+    justify-content: center; /* Centra los logos horizontalmente */
+    gap: 50px; /* Más espacio entre logos */
+    margin-top: 40px; /* Espacio respecto al contenido de arriba */
+    width: 100%;
+}
+
+.redes-sociales .icon {
+    font-size: 40px; /* Tamaño más grande solicitado */
+    color: #cbd5e0; 
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+/* Efecto al pasar el mouse (Agrandar y cambiar color) */
+.redes-sociales .icon:hover {
+    transform: scale(1.5) translateY(-10px); /* Agranda y sube un poco */
+}
+
+.redes-sociales .fb:hover {
+    color: #1877F2;
+    text-shadow: 0 0 20px rgba(24, 119, 242, 0.8);
+}
+
+.redes-sociales .ig:hover {
+    color: #E4405F;
+    text-shadow: 0 0 20px rgba(228, 64, 95, 0.8);
+}
+
+.redes-sociales .tk:hover {
+    color: #00f2ea;
+    text-shadow: 0 0 20px rgba(0, 242, 234, 0.8);
+}
